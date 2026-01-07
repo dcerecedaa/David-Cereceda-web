@@ -11,62 +11,74 @@ body {
     scroll-behavior: smooth;
 }
 
-/* NAV */
+/* NAV - MEJORADO RESPONSIVE */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
+    padding: 20px 5%;
     backdrop-filter: blur(8px);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
+    flex-wrap: wrap;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Reducido para móviles */
     font-weight: 600;
+    white-space: nowrap; /* Evita que se rompa en varias líneas */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Puntos suspensivos si es muy largo */
+    max-width: 150px; /* Limita el ancho máximo */
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 15px; /* Reducido para móviles */
+    list-style: none;
 }
 
 .nav-links a {
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
+    font-size: 0.9rem; /* Reducido para móviles */
 }
 
 .nav-links a:hover {
     color: #44ffcc;
 }
 
-/* HERO */
+/* HERO - MEJORADO RESPONSIVE */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 80px;
+    padding: 100px 5% 20px; /* Ajustado para navbar fija */
 }
 
 .hero-content {
     text-align: center;
     animation: fadeInUp 1.2s ease;
+    width: 100%;
+    max-width: 800px;
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 2rem; /* Reducido para móviles */
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .hero-subtitle {
     margin-top: 10px;
-    font-size: 1.2rem;
+    font-size: 0.9rem; /* Reducido para móviles */
     opacity: 0.85;
+    line-height: 1.5;
+    padding: 0 10px;
 }
 
 .hero-btn {
@@ -79,6 +91,7 @@ body {
     color: #000;
     text-decoration: none;
     transition: 0.3s;
+    font-size: 0.9rem;
 }
 
 .hero-btn:hover {
@@ -88,9 +101,9 @@ body {
 
 /* SECTION BOXES */
 .section-box {
-    width: 85%;
-    margin: 80px auto;
-    padding: 40px 50px;
+    width: 90%;
+    margin: 60px auto;
+    padding: 30px 20px;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     border-radius: 18px;
@@ -105,15 +118,16 @@ body {
 
 h2 {
     margin-bottom: 20px;
-    font-size: 2rem;
+    font-size: 1.8rem; /* Reducido para móviles */
+    text-align: center;
 }
 
 /* PROJECTS */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    justify-items: center; /* centra los cuadros */
+    grid-template-columns: 1fr; /* Una columna en móviles */
+    gap: 25px;
+    justify-items: center;
 }
 
 .project-card {
@@ -123,6 +137,8 @@ h2 {
     backdrop-filter: blur(6px);
     transition: 0.3s;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
 }
 
 .project-card:hover {
@@ -181,20 +197,113 @@ h2 {
 
 .contact-text {
     margin-bottom: 1.5rem; 
+    text-align: center;
 }
 
-.contact-section p {
-    margin-top: 0.5rem;
-}
-
-/* MEDIA QUERIES PARA MÓVIL */
-@media (max-width: 600px) {
-    .section-box {
-        width: 95%;
-        padding: 20px;
+/* MEDIA QUERIES MEJORADAS */
+/* Tablet */
+@media (min-width: 768px) {
+    .navbar {
+        padding: 20px 8%;
     }
-
+    
+    .logo {
+        font-size: 1.5rem;
+        max-width: none;
+    }
+    
+    .nav-links {
+        gap: 30px;
+    }
+    
+    .nav-links a {
+        font-size: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
     .project-grid {
-        gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
+    
+    .section-box {
+        width: 85%;
+        padding: 40px 50px;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .navbar {
+        padding: 20px 10%;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+    
+    .section-box {
+        width: 80%;
+        max-width: 1200px;
+    }
+}
+
+/* Móvil pequeño */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 15px 5%;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+        max-width: 120px;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .hero-btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .section-box {
+        margin: 40px auto;
+        padding: 20px 15px;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+
+html {
+    scroll-padding-top: 80px; 
 }
