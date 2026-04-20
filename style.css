@@ -11,7 +11,7 @@ body {
     scroll-behavior: smooth;
 }
 
-/* NAV - MEJORADO RESPONSIVE */
+/* NAV */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -26,17 +26,17 @@ body {
 }
 
 .logo {
-    font-size: 1.2rem; /* Reducido para móviles */
+    font-size: 1.2rem;
     font-weight: 600;
-    white-space: nowrap; /* Evita que se rompa en varias líneas */
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Puntos suspensivos si es muy largo */
-    max-width: 150px; /* Limita el ancho máximo */
+    text-overflow: ellipsis;
+    max-width: 150px;
 }
 
 .nav-links {
     display: flex;
-    gap: 15px; /* Reducido para móviles */
+    gap: 15px;
     list-style: none;
 }
 
@@ -44,19 +44,20 @@ body {
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
 }
 
 .nav-links a:hover {
     color: #44ffcc;
 }
 
+/* HERO */
 .hero {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px 5% 20px; 
+    padding: 100px 5% 20px;
 }
 
 .hero-content {
@@ -67,14 +68,14 @@ body {
 }
 
 .hero-title {
-    font-size: 2rem; /* Reducido para móviles */
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.2;
 }
 
 .hero-subtitle {
     margin-top: 10px;
-    font-size: 0.9rem; /* Reducido para móviles */
+    font-size: 0.9rem;
     opacity: 0.85;
     line-height: 1.5;
     padding: 0 10px;
@@ -117,16 +118,18 @@ body {
 
 h2 {
     margin-bottom: 20px;
-    font-size: 1.8rem; /* Reducido para móviles */
+    font-size: 1.8rem;
     text-align: center;
 }
 
-/* PROJECTS */
+/* PROJECTS - Grid siempre 1 columna en móvil */
 .project-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna en móviles */
+    grid-template-columns: 1fr;
     gap: 25px;
     justify-items: center;
+    /* align-items: stretch asegura que todas las cards de una fila tengan la misma altura */
+    align-items: stretch;
 }
 
 .project-card {
@@ -138,18 +141,57 @@ h2 {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
     width: 100%;
     max-width: 400px;
+    /* Flex column para que el botón quede siempre abajo */
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
+    /* Posición relativa para el icono en esquina */
+    position: relative;
 }
 
 .project-card h3 {
     margin-bottom: 1px;
+    /* Deja espacio al icono de esquina */
+    padding-right: 40px;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
     background: rgba(255, 255, 255, 0.15);
+}
+
+/* Icono de tecnología en esquina superior derecha */
+.project-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.6rem;
+    color: #44ffcc;
+    opacity: 0.85;
+}
+
+/* Tags de tecnología */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(68, 255, 204, 0.15);
+    border: 1px solid rgba(68, 255, 204, 0.35);
+    color: #44ffcc;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+/* Párrafo de la card empuja el botón al fondo */
+.project-card p {
+    flex-grow: 1;
 }
 
 .btn {
@@ -203,113 +245,124 @@ h2 {
 }
 
 .contact-text {
-    margin-bottom: 1.5rem; 
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
-/* Tablet */
+/* ── Tablet: 2 columnas (2x2) ── */
 @media (min-width: 768px) {
     .navbar {
         padding: 20px 8%;
     }
-    
+
     .logo {
         font-size: 1.5rem;
         max-width: none;
     }
-    
+
     .nav-links {
         gap: 30px;
     }
-    
+
     .nav-links a {
         font-size: 1rem;
     }
-    
+
     .hero-title {
         font-size: 2.8rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.2rem;
     }
-    
+
+    /* 2 columnas iguales → 2 arriba, 2 abajo */
     .project-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: stretch; /* ocupa todo el ancho de cada celda */
     }
-    
+
+    .project-card {
+        max-width: none; /* en grid de 2 cols, eliminar el max-width fijo */
+    }
+
     .section-box {
         width: 85%;
         padding: 40px 50px;
     }
-    
+
     h2 {
         font-size: 2.2rem;
     }
 }
 
-/* Desktop */
+/* ── Desktop: mantener 2 columnas (2x2) ── */
 @media (min-width: 1024px) {
     .navbar {
         padding: 20px 10%;
     }
-    
+
     .hero-title {
         font-size: 3.5rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.4rem;
     }
-    
+
     .section-box {
         width: 80%;
         max-width: 1200px;
     }
+
+    /* Mantener 2 columnas en desktop para el layout 2x2 */
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* Móvil pequeño */
+/* ── Móvil pequeño ── */
 @media (max-width: 480px) {
     .navbar {
         padding: 15px 5%;
     }
-    
+
     .logo {
         font-size: 1.1rem;
         max-width: 120px;
     }
-    
+
     .nav-links {
         gap: 10px;
     }
-    
+
     .nav-links a {
         font-size: 0.85rem;
     }
-    
+
     .hero-title {
         font-size: 1.8rem;
     }
-    
+
     .hero-subtitle {
         font-size: 0.85rem;
     }
-    
+
     .hero-btn {
         padding: 10px 20px;
         font-size: 0.85rem;
     }
-    
+
     .section-box {
         margin: 40px auto;
         padding: 20px 15px;
     }
-    
+
     h2 {
         font-size: 1.6rem;
     }
 }
 
 html {
-    scroll-padding-top: 80px; 
+    scroll-padding-top: 80px;
 }
