@@ -122,13 +122,11 @@ h2 {
     text-align: center;
 }
 
-/* PROJECTS - Grid siempre 1 columna en móvil */
+/* PROJECTS */
 .project-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 columna en móvil */
     gap: 25px;
-    justify-items: center;
-    /* align-items: stretch asegura que todas las cards de una fila tengan la misma altura */
     align-items: stretch;
 }
 
@@ -140,19 +138,13 @@ h2 {
     transition: 0.3s;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
     width: 100%;
-    max-width: 400px;
-    /* Flex column para que el botón quede siempre abajo */
     display: flex;
     flex-direction: column;
     gap: 12px;
-    /* Posición relativa para el icono en esquina */
-    position: relative;
 }
 
 .project-card h3 {
     margin-bottom: 1px;
-    /* Deja espacio al icono de esquina */
-    padding-right: 40px;
 }
 
 .project-card:hover {
@@ -160,17 +152,7 @@ h2 {
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* Icono de tecnología en esquina superior derecha */
-.project-icon {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 1.6rem;
-    color: #44ffcc;
-    opacity: 0.85;
-}
-
-/* Tags de tecnología */
+/* Tech tags */
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
@@ -189,7 +171,7 @@ h2 {
     letter-spacing: 0.03em;
 }
 
-/* Párrafo de la card empuja el botón al fondo */
+/* El párrafo crece para empujar el botón al fondo */
 .project-card p {
     flex-grow: 1;
 }
@@ -249,7 +231,7 @@ h2 {
     text-align: center;
 }
 
-/* ── Tablet: 2 columnas (2x2) ── */
+/* ── Tablet ── */
 @media (min-width: 768px) {
     .navbar {
         padding: 20px 8%;
@@ -276,14 +258,9 @@ h2 {
         font-size: 1.2rem;
     }
 
-    /* 2 columnas iguales → 2 arriba, 2 abajo */
+    /* 2 columnas fijas → siempre 2x2 */
     .project-grid {
         grid-template-columns: repeat(2, 1fr);
-        justify-items: stretch; /* ocupa todo el ancho de cada celda */
-    }
-
-    .project-card {
-        max-width: none; /* en grid de 2 cols, eliminar el max-width fijo */
     }
 
     .section-box {
@@ -296,7 +273,7 @@ h2 {
     }
 }
 
-/* ── Desktop: mantener 2 columnas (2x2) ── */
+/* ── Desktop ── */
 @media (min-width: 1024px) {
     .navbar {
         padding: 20px 10%;
@@ -315,7 +292,7 @@ h2 {
         max-width: 1200px;
     }
 
-    /* Mantener 2 columnas en desktop para el layout 2x2 */
+    /* Forzar 2 columnas también en desktop */
     .project-grid {
         grid-template-columns: repeat(2, 1fr);
     }
